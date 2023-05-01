@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\FuncCall;
-use App\Http\Controllers\admin\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +23,19 @@ Route::fallback(function(){
     return "maaf alamat tidak ditemukan";
 });
 
-Route::get('/',[PageController::class,'index']);
-Route::get('/mahasiswa',[PageController::class,'tampil']);
+//mahasiswa
+Route::get('mahasiswa',function (){
+    $arrMahasiswa = ["Luhut Panjaitan","Jokowi","Vladimir Putin","Lisa Permata"];
+    return view('jobshet4.mahasiswa')->with('mahasiswa',$arrMahasiswa);
+});
 
-Route::get('/coba-facade',[PageController::class,'cobaFacade']);
+//dosen
+Route::get('dosen',function (){
+    $arrDosen = ["Maya Fitrianti, M.M.","Prof.Silvia Nst, M.Farm.","Dr. Umar Agustinus","Dr. Syahrial, M.Kom."];
+    return view('jobshet4.dosen')->with('dosen',$arrDosen);
+});
 
-Route::get('/coba-class',[PageController::class,'cobaClass']);
+//gelery
+Route::get('gallery',function (){
+    return view('jobshet4.gallery');
+});
